@@ -1,0 +1,31 @@
+{
+  "triagers": {
+    "Jeff Boek": {
+      "bzmail": "jboek@mozilla.com"
+    },
+    "Arturo Mejia": {
+      "bzmail": "amejiamarmol@mozilla.com"
+    },
+    "Roger Yang": {
+      "bzmail": "Roger Yang"
+    },
+    "Rahul Sainani": {
+      "bzmail": "rsainani@mozilla.com"
+    }
+  },
+  "duty-start-dates": {
+    "2024-05-15": "Jeff Boek",
+    "2024-06-12": "Arturo Mejia",
+    "2024-07-10": "Roger Yang",
+    "2024-08-07": "Rahul Sainani",
+    "2024-09-04": "Jeff Boek",
+    "2024-10-02": "Arturo Mejia",
+    "2024-10-30": "Roger Yang",
+    "2024-11-27": "Rahul Sainani",
+    "2024-12-25": "Jeff Boek",
+    "2025-01-22": "Arturo Mejia",
+    "2025-02-19": "Roger Yang",
+    "2025-03-19": "Rahul Sainani",
+    "2025-04-16": "Jeff Boek"
+  }
+}
