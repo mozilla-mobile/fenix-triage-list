@@ -3,8 +3,8 @@
     "Jeff Boek": {
       "bzmail": "jboek@mozilla.com"
     },
-    "Arturo Mejia": {
-      "bzmail": "amejiamarmol@mozilla.com"
+    "Tom White": {
+      "bzmail": "towhite@mozilla.com"
     },
     "Zac McKenney": {
       "bzmail": "zmckenney@mozilla.com"
@@ -23,13 +23,9 @@
     "2024-10-30": "Zac McKenney",
     "2024-11-27": "Rahul Sainani",
     "2024-12-25": "Jeff Boek",
-    "2025-01-22": "Arturo Mejia",
+    "2025-01-22": "Tom White",
     "2025-02-19": "Zac McKenney",
     "2025-03-19": "Rahul Sainani",
-    "2025-04-16": "Jeff Boek",
-    "2025-05-14": "Arturo Mejia",
-    "2025-06-11": "Zac McKenney",
-    "2025-07-09": "Rahul Sainani",
-    "2025-08-06": "Jeff Boek"
+    "2025-04-16": "Jeff Boek"
   }
 }
