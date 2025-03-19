@@ -9,8 +9,8 @@
     "Zac McKenney": {
       "bzmail": "zmckenney@mozilla.com"
     },
-    "Rahul Sainani": {
-      "bzmail": "rsainani@mozilla.com"
+    "Cathy Lu": {
+      "bzmail": "calu@mozilla.com"
     }
   },
   "duty-start-dates": {
@@ -25,7 +25,13 @@
     "2024-12-25": "Jeff Boek",
     "2025-01-22": "Tom White",
     "2025-02-19": "Zac McKenney",
-    "2025-03-19": "Rahul Sainani",
-    "2025-04-16": "Jeff Boek"
+    "2025-03-19": "Cathy Lu",
+    "2025-04-16": "Jeff Boek",
+    "2025-05-14": "Tom White",
+    "2025-06-11": "Zac McKenney",
+    "2025-07-09": "Cathy Lu",
+    "2025-08-06": "Jeff Boek",
+    "2025-09-03": "Tom White",
+    "2025-10-01": "Zac McKenney"
   }
 }
