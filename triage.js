@@ -10,9 +10,6 @@ commands
 
 const TRIAGE_JSON_FILE = "general-triage.json";
 const TRIAGE_ICAL_FILE = "general-triage.ics";
-const CYCLE_LENGTH_DAYS = 28;
-const DAY_TO_MS = 24 * 60 * 60 * 1000;
-const CYCLE_LENGTH_MS = CYCLE_LENGTH_DAYS * DAY_TO_MS;
 
 function readTriage() {
   let data = fs.readFileSync(TRIAGE_JSON_FILE);
@@ -44,6 +41,19 @@ function nextTriager(triagers, current_triager) {
   return names[index];
 }
 
+function addOneUtcMonth(dateString) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  const d = new Date(Date.UTC(year, month - 1, day));
+  
+  d.setUTCMonth(d.getUTCMonth() + 1);
+  
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(d.getUTCDate()).padStart(2, "0");
+
+  return `${y}-${m}-${dd}`;
+}
+
 function commandUpdate() {
   let { triage, triagers, duties } = readTriage();
 
@@ -54,16 +64,15 @@ function commandUpdate() {
   
   [last_date] = last_date;
   let last_triager = duties[last_date];
+  
+  let next_date = last_date;
   let next_triager = last_triager;
-  let next_date_ms = new Date(last_date).getTime();
 
   do {
-    next_date_ms += CYCLE_LENGTH_MS;
+    next_date = addOneUtcMonth(next_date)
     next_triager = nextTriager(triagers, next_triager);
-
-    let date = new Date(next_date_ms).toISOString().replace(/T.*$/, "");
-    duties[date] = next_triager;
-    console.log(`Added: from ${date} duty ${next_triager}`);
+    duties[next_date] = next_triager;
+    console.log(`Added: from ${next_date} duty ${next_triager}`);
   } while (next_triager !== last_triager);
 
   writeTriage(triage);
@@ -76,21 +85,20 @@ function commandPrepush() {
   const ical = require('ical-toolkit');
   let builder = ical.createIcsFileBuilder();
 
-  builder.calname = "Necko Triage";
+  builder.calname = "General Triage";
   builder.timezone = "Europe/Dublin";
   builder.tzid = "Europe/Dublin";
   builder.additionalTags = {
     'REFRESH-INTERVAL': 'VALUE=DURATION:P1H',
-    'X-WR-CALDESC': 'Necko Triage'
+    'X-WR-CALDESC': 'General Triage'
   };
 
   for (let duty_date in duties) {
     let duty_triager = duties[duty_date];
-    let duty_date_ms = new Date(duty_date).getTime();
     builder.events.push({
-      start: new Date(duty_date_ms),
-      end: new Date(duty_date_ms + CYCLE_LENGTH_MS),
-      summary: `Necko triager: ${duty_triager}`,
+      start: new Date(duty_date),
+      end: new Date(addOneUtcMonth(duty_date)),
+      summary: `General triager: ${duty_triager}`,
       allDay: true,
     });
   }
